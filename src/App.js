@@ -5,13 +5,13 @@ class App extends Component {
     return (
       <div className='app'>
         <div className='navigation'>
-          <p>navigation</p>
+          <Navigation />
         </div>
         <div className='todays-forecast'>
-          <p>todays weather</p>
+          {/* <todaysForecast /> */}
         </div>
         <div className='future-forecast'>
-          <p>weather info</p>
+          {/* <futureForecast /> */}
         </div>
       </div>
     );
