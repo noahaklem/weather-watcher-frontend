@@ -15,12 +15,31 @@
 }
 
 .todays-forecast {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: nowrap;
   width: 100%;
   height: 300px;
   background-color: lightgray;
 }
 
 .future-forecast {
+  margin-top: 10px;
   width: 100%;
-  
+  height: 400px;
+  border: 3px solid black;
+  background-color: cadetblue;
+}
+
+.todays-forecast-card {
+  width: 48%;
+  height: 99%;
+  border: 3px solid black;
+}
+
+.todays-details-card {
+  width: 48%;
+  height: 99%;
+  border: 3px solid black;
 }
