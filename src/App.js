@@ -11,6 +11,8 @@ class App extends Component {
     }
   }
 
+  
+
   componentDidMount() {
     ForecastService.getForecast().then(forecasts => this.setState({ forecasts })
     )
