@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
+import TodaysForecast from './components/TodaysForecast';
+import TodaysDetails from './components/TodaysDetails';
 
-class App extends Component {
+class App extends React.Component {
   render () {
     return (
       <div className='app'>
         <div className='navigation'>
-          <Navigation />
+          {/* <Navigation /> */}
         </div>
         <div className='todays-forecast'>
-          {/* <todaysForecast /> */}
+          <TodaysForecast />
+          <TodaysDetails />
         </div>
         <div className='future-forecast'>
-          {/* <futureForecast /> */}
+          {/* <FutureForecast /> */}
         </div>
       </div>
     );
