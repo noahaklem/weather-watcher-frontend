@@ -18,15 +18,14 @@ class AddForecast extends Component {
 
   handleOnSubmit = event => {
     event.preventDefault();
-    const forecast = this.state;
-    this.props.addForecast(forecast)
+    const city_name = this.state;
+    this.props.addForecast(city_name)
     this.setState({
       city_name: ''
     })
   }
 
   render() {
-    console.log(this.state)
     return (
       <form onSubmit={ this.handleOnSubmit }>
         <label htmlFor='city_name'>City Name:</label>
