@@ -12,10 +12,11 @@ class App extends Component {
     }
   }
 
-  addForecast = forecast => {
-    ForecastService.createForecast(forecast).then(forecast => this.setState({
-      ...this.state.forecasts,
-      forecasts: forecast
+  addForecast = city_name => {
+    ForecastService.createForecast(city_name).then(forecast => this.setState(previousState => {
+      return {
+        forecasts: [previousState.forecasts, forecast]
+      }
     }))
   }
   
