@@ -1,8 +1,5 @@
 import { Component } from 'react';
-import TodaysForecast from './components/TodaysForecast';
-import TodaysDetails from './components/TodaysDetails';
 import ForecastService from './services/ForecastService';
-import AddForecast from './components/AddForecast';
 
 class App extends Component {
   constructor() {
@@ -31,11 +28,7 @@ class App extends Component {
       <div className='app'>
         <div className='navigation'>
           {/* <Navigation /> */}
-          <AddForecast addForecast= { this.addForecast }/>
-        </div>
-        <div className='todays-forecast'>
-          <TodaysForecast />
-          <TodaysDetails />
+          {/* <AddForecast addForecast= { this.addForecast }/> */}
         </div>
         <div className='future-forecast'>
           {/* <FutureForecast /> */}
