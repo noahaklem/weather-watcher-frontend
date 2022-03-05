@@ -1,4 +1,5 @@
 import React from "react";
+import City from '../presentational/City'
 
 class ForecastContainer extends React.Component {
   constructor(props){
@@ -11,6 +12,12 @@ class ForecastContainer extends React.Component {
 
 
   render(){
-    return
+    return (
+      <div className="forecast-container">
+        <City />
+      </div>
+    )
   }
 }
+
+export default ForecastContainer;
