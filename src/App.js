@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import ForecastService from './services/ForecastService';
 import NavigationContainer from './components/container/NavigationContainer';
+import ForecastContainer from './components/container/ForecastContainer';
 
 class App extends Component {
   constructor() {
@@ -30,8 +31,8 @@ class App extends Component {
         <div className='navigation'>
           <NavigationContainer addForecast={this.addForecast} />
         </div>
-        <div className='weather-container'>
-          
+        <div className='forecast-container'>
+          <ForecastContainer />
         </div>
       </div>
     );
