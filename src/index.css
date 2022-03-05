@@ -7,9 +7,40 @@
   text-align: center;
 }
 
-.navigation {
-  height: 40px;
+.navigation-container {
+  height: 100px;
   width: 100%;
   background-color: aquamarine;
-  border-bottom: 2px solid white;
+  border-bottom: 2px solid black;
+}
+
+.container {
+  cursor: pointer;
+  float: left;
+  padding-top: 10px;
+}
+
+.container a {
+  display: inline;
+}
+
+.container a:hover {
+  background-color: white;
+}
+
+#addcity-container {
+  cursor: pointer;
+  float: right;
+  padding-top: 10px;
+  padding-right: 50px;
+}
+
+#addcity-container button {
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+}
+
+#addcity-container button:hover {
+  background-color: white;
 }
