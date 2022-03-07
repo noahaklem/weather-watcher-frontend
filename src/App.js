@@ -14,7 +14,7 @@ class App extends Component {
       isLoggedIn: false,
       showForm: true,
       city: '',
-      cities: [],
+      cities: ["denver", "san jose", "missoula", "great falls"],
       forecasts: []
     }
     this.handleOnToggle = this.handleOnToggle.bind(this);
@@ -38,9 +38,8 @@ class App extends Component {
     // this.addForecast(city);
     this.setState( previousState => {
       return {
-        ...previousState,
         city: '',
-        cities: [city]
+        cities: [...previousState.cities, city]
       }
     })
     console.log(this.state)
@@ -75,7 +74,7 @@ class App extends Component {
       <>
         <Navigation onClick={ this.handleOnToggle }/>
         <NewCityForm showForm={ this.state.showForm } onClick={ this.handleOnToggle } onSubmit={ this.handleOnSubmit } onChange={ this.handleOnChange }/>
-        <Cities />
+        <Cities cities={ this.state.cities }/>
       </>
       
       // <div className='app'>

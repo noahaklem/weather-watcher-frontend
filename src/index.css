@@ -61,3 +61,8 @@
   background-color: lightgreen;
 }
 
+.cities-container {
+  background-color: cadetblue;
+  min-height: 200px;
+}
+

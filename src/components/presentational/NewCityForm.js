@@ -11,7 +11,7 @@ function NewCityForm(props) {
         Close
       </button>
       <form className="add-new-city-form" onSubmit={ props.onSubmit } >
-        <label htmlFor='city_name'>City Name:</label>
+        <label htmlFor='city_name'>Enter a City Name:</label>
         <input 
           type="text"
           name="city"

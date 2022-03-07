@@ -1,7 +1,9 @@
-function Cities() {
+import CityCard from "./CityCard";
+
+function Cities({ cities }) {
   return (
-    <section>
-      <p>cities go here</p>
+    <section className="cities-container">
+      return { cities }
     </section>
   )
 }
