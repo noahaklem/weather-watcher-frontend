@@ -2,11 +2,12 @@ import React from 'react';
 import CityName from './CityName';
 import Forecast from './Forecast';
 
-const City = (props) => (
+const City = ({forecasts}) => (
   <div className="city-container">
-    <CityName />
-    <Forecast />
+    <CityName forecasts={ forecasts } />
+    <Forecast forecasts={ forecasts } />
   </div>
+  
 )
 
 export default City;
