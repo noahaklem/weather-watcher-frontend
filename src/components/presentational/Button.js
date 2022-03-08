@@ -1,4 +1,4 @@
-function Button({ onClick }) {
+const Button = ({ onClick }) => {
   return (
     <button onClick={ onClick }>
       Add A City

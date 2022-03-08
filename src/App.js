@@ -14,7 +14,7 @@ class App extends Component {
       isLoggedIn: false,
       showForm: true,
       city: '',
-      cities: ["denver", "san jose", "missoula", "great falls"],
+      cities: [],
       forecasts: []
     }
     this.handleOnToggle = this.handleOnToggle.bind(this);
@@ -29,20 +29,18 @@ class App extends Component {
         showForm: !this.state.showForm
       }
     })
-    console.log(this.state)
   }
 
   handleOnSubmit = (event) => {
     event.preventDefault();
     const city = this.state.city;
-    // this.addForecast(city);
     this.setState( previousState => {
       return {
         city: '',
         cities: [...previousState.cities, city]
       }
     })
-    console.log(this.state)
+    this.addForecast(city);
   }
 
   handleOnChange = (event) => {
@@ -52,17 +50,13 @@ class App extends Component {
     })
   }
 
-  // handleFetch = () => {
-  //   console.log("its time to fetch stuff")
-  // }
-
-  // addForecast = city_name => {
-  //   ForecastService.createForecast(city_name).then(forecast => this.setState(previousState => {
-  //     return {
-  //       forecasts: [previousState.forecasts, forecast]
-  //     }
-  //   }))
-  // }
+  addForecast = city => {
+    ForecastService.createForecast(city).then(forecast => this.setState(previousState => {
+      return {
+        forecasts: [...previousState.forecasts, forecast]
+      }
+    }))
+  }
   
   // componentDidMount() {
   //   ForecastService.getForecast().then(forecasts => this.setState({ forecasts })
@@ -70,11 +64,12 @@ class App extends Component {
   // }
 
   render () {
+    console.log(this.state.forecasts)
     return (
       <>
         <Navigation onClick={ this.handleOnToggle }/>
-        <NewCityForm showForm={ this.state.showForm } onClick={ this.handleOnToggle } onSubmit={ this.handleOnSubmit } onChange={ this.handleOnChange }/>
-        <Cities cities={ this.state.cities }/>
+        <NewCityForm showForm={ this.state.showForm } onClick={ this.handleOnToggle } onSubmit={ this.handleOnSubmit } onChange={ this.handleOnChange } city={ this.state.city }/>
+        <Cities cities={ this.state.cities } forecasts={ this.state.forecasts }/>
       </>
       
       // <div className='app'>

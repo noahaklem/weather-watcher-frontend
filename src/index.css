@@ -17,6 +17,7 @@
 
 .add-new-city-form-container {
   text-align: center;
+  background-color: cornsilk;
   border-bottom: 2px solid black;
   height: 175px;
   width: 100%;
@@ -61,8 +62,46 @@
   background-color: lightgreen;
 }
 
-.cities-container {
-  background-color: cadetblue;
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
   min-height: 200px;
+}
+
+.city-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+
+.city-card {
+  background-color: cornsilk;
+  border: 2px solid black;
+  border-radius: 10px;
+  margin: 10px;
+  height: 150px;
+  width: 150px;
+
+}
+
+.forecasts-container {
+  width: 100%;
+}
+
+.forecast-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  border-bottom: 2px solid black;
+}
+
+.forecast-card {
+  background-color: aquamarine;
+  border: 2px solid black;
+  border-radius: 10px;
+  margin: 10px;
+  height: 150px;
+  width: 150px;
 }
 

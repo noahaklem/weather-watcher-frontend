@@ -1,5 +1,3 @@
-import Button from "./Button";
-
 function NewCityForm(props) {
   if (!props.showForm) {
     return null;
@@ -15,6 +13,7 @@ function NewCityForm(props) {
         <input 
           type="text"
           name="city"
+          value={ props.city }
           onChange={ props.onChange }
           placeholder="Enter A City Name ex: Denver,CO"
         />

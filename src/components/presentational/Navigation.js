@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import Button from './Button';
 
 
-function Navigation({ onClick }) {
+const Navigation = ({ onClick }) => {
   return (
     <nav className="navigation-container">
       {/* <SignUp />

@@ -13,7 +13,7 @@ const ForecastService = {
     return fetch(`${baseURL}/forecasts`, {
       method: 'POST',
       headers: headers,
-      body: JSON.stringify(body)
+      body: JSON.stringify({city: body})
     }).then(res => res.json());
   }
 }
