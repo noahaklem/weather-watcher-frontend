@@ -49,8 +49,6 @@ class App extends Component {
     this.props.dispatch(addForecast(city));
   }
 
-
-
   // addForecast = city => {
   //   ForecastService.createForecast(city).then(forecast => this.setState(previousState => {
   //     return {
@@ -69,7 +67,7 @@ class App extends Component {
       <>
         <Navigation onClick={ this.handleOnToggle }/>
         <NewCityForm showForm={ this.props.showForm } onClick={ this.handleOnToggle } onSubmit={ this.handleOnSubmit } onChange={ this.handleOnChange } city={ this.state.city }/>
-        <Cities cities={ this.props.cities } forecasts={ this.props.forecasts }/>
+        <Cities requesting={ this.props.requesting } cities={ this.props.cities } forecasts={ this.props.forecasts }/>
       </>
     );
   }
@@ -77,10 +75,12 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   console.log(state.forecasts)
+  console.log(state.requesting)
   return { 
+    requesting: state.requesting,
     forecasts: state.forecasts,
     cities: state.cities,
-    showForm: state.showForm 
+    showForm: state.showForm,
   };
 };
 

@@ -3,7 +3,8 @@ import { combineReducers } from "redux";
 const rootReducer = combineReducers({
 	showForm: showFormReducer,
 	cities: addCity,
-	forecasts: addForecast
+	forecasts: addForecast,
+	requesting: false,
 });
 
 export default rootReducer;
@@ -32,11 +33,24 @@ function addCity (state = [], action) {
 	}
 }
 
-function addForecast (state = [], action) {
-	
+function addForecast (
+	state = { forecasts: [], requesting: false }, 
+	action
+) {
 	switch (action.type) {
+		case 'START_ADDING_FORECAST':
+			return {
+				...state,
+				forecasts: [...state.forecasts],
+				requesting: true,
+			};
+
 		case 'ADD_FORECAST':
-			return [...state, action.city]
+			return {
+				...state,
+				forecasts: [...forecasts, action.forecast],
+				requesting: false,
+			}
 
 		default:
 			return state;

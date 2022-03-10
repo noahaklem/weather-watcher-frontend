@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
+// thunk
+import thunk from "redux-thunk"; 
+
 // stylesheet
 import './index.css';
 
@@ -11,7 +14,7 @@ import Login from './components/presentational/Login';
 import SignUp from './components/presentational/SignUp';
 
 // redux
-import { createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
 
 // reducers
@@ -20,7 +23,7 @@ import rootReducer from './reducers/rootReducer';
 
 
 const store = createStore(
-  rootReducer,
+  rootReducer, applyMiddleware(thunk),
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 

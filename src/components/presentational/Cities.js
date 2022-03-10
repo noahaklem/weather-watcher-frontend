@@ -1,7 +1,15 @@
 import CityCard from "./CityCard";
 import ForecastCard from "./ForecastCard";
 
-function Cities({ cities, forecasts }) {
+function Cities({ cities, forecasts, requesting }) {
+  if (requesting) {
+    return (
+      <div className="forecasts-container">
+        <p>JUST ONE SEC, I'M LOADING</p>
+      </div>
+    )
+  }
+  
   const cityCards = cities.map((city) => (
     <CityCard key={ city } city={ city }/>
   ));
