@@ -1,46 +1,35 @@
 import { Component } from 'react';
+
+// Components
 import Navigation from './components/presentational/Navigation';
 import Cities from './components/presentational/Cities';
-
 import NewCityForm from './components/presentational/NewCityForm';
 import ForecastService from './services/ForecastService';
+
 import NavigationContainer from './components/container/NavigationContainer';
 import ForecastContainer from './components/container/ForecastContainer';
+
+// actions
+import { addCity } from './actions/addCity';
+import { showForm } from './actions/showForm';
+import { addForecast } from './actions/addForecast';
+// redux
+import { connect } from 'react-redux';
+
+
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isLoggedIn: false,
-      showForm: true,
       city: '',
-      cities: [],
       forecasts: []
     }
-    this.handleOnToggle = this.handleOnToggle.bind(this);
-    this.handleOnSubmit = this.handleOnSubmit.bind(this);
-    this.handleOnChange = this.handleOnChange.bind(this);
   }
 
-  handleOnToggle() {
-    this.setState(previousState => {
-      return {
-        ...previousState,
-        showForm: !this.state.showForm
-      }
-    })
-  }
-
-  handleOnSubmit = (event) => {
-    event.preventDefault();
-    const city = this.state.city;
-    this.setState( previousState => {
-      return {
-        city: '',
-        cities: [...previousState.cities, city]
-      }
-    })
-    this.addForecast(city);
+  handleOnToggle = () => {
+    this.props.dispatch(showForm());
   }
 
   handleOnChange = (event) => {
@@ -50,13 +39,25 @@ class App extends Component {
     })
   }
 
-  addForecast = city => {
-    ForecastService.createForecast(city).then(forecast => this.setState(previousState => {
-      return {
-        forecasts: [...previousState.forecasts, forecast]
-      }
-    }))
+  handleOnSubmit = (event) => {
+    event.preventDefault();
+    const city = this.state.city;
+    this.props.dispatch(addCity(city));
+    this.setState({
+      city: ''
+    })
+    this.props.dispatch(addForecast(city));
   }
+
+
+
+  // addForecast = city => {
+  //   ForecastService.createForecast(city).then(forecast => this.setState(previousState => {
+  //     return {
+  //       forecasts: [...previousState.forecasts, forecast]
+  //     }
+  //   }))
+  // }
   
   // componentDidMount() {
   //   ForecastService.getForecast().then(forecasts => this.setState({ forecasts })
@@ -64,24 +65,31 @@ class App extends Component {
   // }
 
   render () {
-    console.log(this.state.forecasts)
     return (
       <>
         <Navigation onClick={ this.handleOnToggle }/>
-        <NewCityForm showForm={ this.state.showForm } onClick={ this.handleOnToggle } onSubmit={ this.handleOnSubmit } onChange={ this.handleOnChange } city={ this.state.city }/>
-        <Cities cities={ this.state.cities } forecasts={ this.state.forecasts }/>
+        <NewCityForm showForm={ this.props.showForm } onClick={ this.handleOnToggle } onSubmit={ this.handleOnSubmit } onChange={ this.handleOnChange } city={ this.state.city }/>
+        <Cities cities={ this.props.cities } forecasts={ this.props.forecasts }/>
       </>
-      
-      // <div className='app'>
-      //   <div className='navigation'>
-      //     <NavigationContainer onClick= { this.handleOnClick } onSubmit= { this.handleOnSubmit } />
-      //   </div>
-      //   <div className='forecast-container'>
-      //     <ForecastContainer forecasts={ this.state.forecasts }/>
-      //   </div>
-      // </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  console.log(state.forecasts)
+  return { 
+    forecasts: state.forecasts,
+    cities: state.cities,
+    showForm: state.showForm 
+  };
+};
+
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     addCity: (city) => {
+//       dispatch(addCity(city))
+//     }
+//   };
+// };
+
+export default connect(mapStateToProps)(App);
