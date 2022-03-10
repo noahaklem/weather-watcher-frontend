@@ -1,11 +1,19 @@
-function ForecastCard({ index, forecast }) {
+function ForecastCard({ forecast }) {
   const forecastInfo = forecast.map((f) => (
-    <div key={index} className="forecast-card">
-      <p>{ f.date }</p>
-      <p>{f.conditions}</p>
+    <div className="forecast-card">
       <div>
-        <p>Max Temp:{f.max_temp}</p>
-        <p>Low Temp: {f.min_temp}</p>
+        <p>{ f.date }</p>
+      </div>
+      <div>
+        <p>{f.conditions}</p>
+      </div>
+      <div className="temp-container">
+        <div className="max">
+          Max Temp:{f.max_temp}
+        </div>
+        <div className="min">
+          Low Temp: {f.min_temp}
+        </div>
       </div>
     </div>
   ))

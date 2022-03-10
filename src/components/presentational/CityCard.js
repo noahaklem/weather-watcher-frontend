@@ -1,8 +1,8 @@
-function CityCard({key, city}) {
+function CityCard({city}) {
   return (
-    <div key={ key } className="city-card">
+    <div key={ city } className="city-card">
       <div className="content">
-        <button>Delete</button>
+        <button className="delete">X</button>
         <div className="city-name">
           <p>{ city }</p>
         </div>

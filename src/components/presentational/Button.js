@@ -1,6 +1,6 @@
 const Button = ({ onClick }) => {
   return (
-    <button onClick={ onClick }>
+    <button className="add-a-city" onClick={ onClick }>
       Add A City
     </button>
   ) 
