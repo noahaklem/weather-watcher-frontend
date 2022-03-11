@@ -1,22 +1,18 @@
+// react
 import { Component } from 'react';
 
 // Components
 import Navigation from './components/presentational/Navigation';
 import Cities from './components/presentational/Cities';
 import NewCityForm from './components/presentational/NewCityForm';
-import ForecastService from './services/ForecastService';
-
-import NavigationContainer from './components/container/NavigationContainer';
-import ForecastContainer from './components/container/ForecastContainer';
 
 // actions
 import { addCity } from './actions/addCity';
 import { showForm } from './actions/showForm';
 import { addForecast } from './actions/addForecast';
+
 // redux
 import { connect } from 'react-redux';
-
-
 
 class App extends Component {
   constructor(props) {
@@ -24,7 +20,6 @@ class App extends Component {
     this.state = {
       isLoggedIn: false,
       city: '',
-      forecasts: []
     }
   }
 
@@ -48,16 +43,6 @@ class App extends Component {
     })
     this.props.dispatch(addForecast(city));
   }
-
-
-
-  // addForecast = city => {
-  //   ForecastService.createForecast(city).then(forecast => this.setState(previousState => {
-  //     return {
-  //       forecasts: [...previousState.forecasts, forecast]
-  //     }
-  //   }))
-  // }
   
   // componentDidMount() {
   //   ForecastService.getForecast().then(forecasts => this.setState({ forecasts })
@@ -68,21 +53,25 @@ class App extends Component {
     return (
       <>
         <Navigation onClick={ this.handleOnToggle }/>
-        <NewCityForm showForm={ this.props.showForm } onClick={ this.handleOnToggle } onSubmit={ this.handleOnSubmit } onChange={ this.handleOnChange } city={ this.state.city }/>
-        <Cities cities={ this.props.cities } forecasts={ this.props.forecasts }/>
+        <NewCityForm showForm={ this.props.showForm} onClick={ this.handleOnToggle } onSubmit={ this.handleOnSubmit } onChange={ this.handleOnChange } city={ this.state.city }/>
+        <Cities requesting={ this.props.requesting } cities={ this.props.cities } forecasts={ this.props.forecast }/>
       </>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  console.log(state.forecasts)
+  console.log(state)
   return { 
-    forecasts: state.forecasts,
+    requesting: state.requesting,
+    forecast: state.forecasts,
     cities: state.cities,
-    showForm: state.showForm 
+    showForm: state.showForm,
   };
 };
+
+// if I wanted to just call the action by name in the event handlers
+// I can do that here with mapDispatchToProps
 
 // const mapDispatchToProps = (dispatch) => {
 //   return {
