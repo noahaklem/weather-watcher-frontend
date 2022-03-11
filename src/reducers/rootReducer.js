@@ -25,7 +25,6 @@ function addCity (state = [], action) {
 
 	switch (action.type) {
 		case 'ADD_CITY':
-			console.log(state.cities)
 			return [...state, action.city ]
 
 		default:
@@ -48,9 +47,9 @@ function addForecast (
 		case 'ADD_FORECAST':
 			return {
 				...state,
-				forecasts: [...forecasts, action.forecast],
+				forecasts: [...state.forecasts, action.forecast],
 				requesting: false,
-			}
+			};
 
 		default:
 			return state;

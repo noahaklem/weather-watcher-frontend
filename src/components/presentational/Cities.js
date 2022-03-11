@@ -1,12 +1,15 @@
 import CityCard from "./CityCard";
 import ForecastCard from "./ForecastCard";
 
-function Cities({ cities, forecasts, requesting }) {
-  if (requesting) {
+function Cities({ cities, forecasts}) {
+  if (forecasts.requesting) {
     return (
-      <div className="forecasts-container">
-        <p>JUST ONE SEC, I'M LOADING</p>
+      <div className="container">
+        <div className="requesting-container">
+          <p>JUST ONE SEC, I'M LOADING</p>
+        </div>
       </div>
+      
     )
   }
   
@@ -14,7 +17,7 @@ function Cities({ cities, forecasts, requesting }) {
     <CityCard key={ city } city={ city }/>
   ));
 
-  const forecastCards = forecasts.map((forecast) => (
+  const forecastCards = forecasts.forecasts.map((forecast) => (
     <ForecastCard forecast={ forecast.data.attributes.daily_weather }/>
   ))
 
