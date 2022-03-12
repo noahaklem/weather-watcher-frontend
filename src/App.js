@@ -49,7 +49,7 @@ class App extends Component {
   // }
 
   render () {
-    console.log(this.state)
+    console.log(this.props)
     return (
       <>
         <Navigation isLoggedIn={ this.props.isLoggedIn } onClick={ this.handleOnToggle } />
@@ -62,10 +62,9 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return { 
-    isLoggedIn: state.isLoggedIn,
-    token: state.token,
+    isLoggedIn: state.username.isLoggedIn,
     username: state.username,
-    requesting: state.requesting,
+    requesting: state.forecasts.requesting,
     forecast: state.forecasts,
     cities: state.cities,
     showForm: state.showForm,

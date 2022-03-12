@@ -4,9 +4,6 @@ const rootReducer = combineReducers({
 	showForm: showFormReducer,
 	cities: addCity,
 	forecasts: addForecast,
-	requesting: false,
-	isLoggedIn: false,
-	token: '',
 	username: addUser,
 });
 
@@ -60,24 +57,24 @@ function addForecast (
 }
 
 function addUser (
-	state = { username: '', token: '', loggedIn: false },
+	state = { username: '', isLoggedIn: false },
 	action
 ) {
 	switch (action.type) {
-		case 'START_ADDING_USER':
+		case 'START_LOGGING_IN_USER':
+			console.log('START FETCH LOGGING IN USER')
 			return {
 				...state,
 				username: state.username,
-				token: '',
-				loggedIn: false,
+				isLoggedIn: false,
 			};
 
-		case 'ADD_USER':
+		case 'LOGIN_USER':
+			console.log('USER SHOULD BE LOGGED IN')
 			return {
 				...state,
 				username: action.user.username,
-				token: action.user.jwt,
-				loggedIn: true,
+				isLoggedIn: true,
 				// forecasts: [...state.forecasts, action.user.forecasts]
 			}
 

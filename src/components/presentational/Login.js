@@ -1,7 +1,10 @@
 import react from "react";
 
+// components
+import App from "../../App";
+
 // actions
-import { addUser } from "../../actions/addUser";
+import { loginUser } from "../../actions/loginUser";
 
 // redux
 import { connect } from 'react-redux';
@@ -29,10 +32,17 @@ class Login extends react.Component{
       username: '',
       password: '',
     })
-    this.props.dispatch(addUser(user))
+    this.props.dispatch(loginUser(user))
   }
 
   render() {
+    console.log(this.props)
+    if(this.props.isLoggedIn) {
+      return (
+        <App /> 
+      );
+    }
+
     return (
       <form onSubmit={ this.handleOnSubmit }>
         <h1>Login</h1>
@@ -64,8 +74,8 @@ class Login extends react.Component{
 
 const mapStateToProps = (state) => {
   return {
-    username: state.username,
-    password: state.password,
+    isLoggedIn: state.username.isLoggedIn,
+    username: state.username.username,
   }
 }
 

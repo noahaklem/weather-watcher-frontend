@@ -1,8 +1,12 @@
+// react
 import { NavLink } from "react-router-dom";
+
+// components
 import Button from './Button';
 
 
 const Navigation = ({onClick, isLoggedIn}) => {
+  console.log(isLoggedIn)
   if (isLoggedIn) {
     return (
     <nav className="navigation-container">
@@ -20,7 +24,7 @@ const Navigation = ({onClick, isLoggedIn}) => {
         SignUp 
       </NavLink >
       ||
-      <NavLink to="/login" exact >
+      <NavLink to='/login' exact >
        Login
       </NavLink>
       
