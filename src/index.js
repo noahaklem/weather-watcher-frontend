@@ -7,8 +7,8 @@ import './index.css';
 
 // Components
 import App from './App'
-import Login from './components/presentational/Login';
 import SignUp from './components/presentational/SignUp';
+import { Login } from './components/presentational/Login';
 
 // redux
 import { applyMiddleware, createStore } from 'redux';
