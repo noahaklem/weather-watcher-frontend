@@ -1,10 +1,16 @@
-function SignUp() {
+const SignUp = (props) => {
   return (
     <form >
       <h1>Sign Up</h1>
       <label htmlFor="username">Username</label>
       <div>
-        <input type="text" name="username" placeholder="Username" />
+        <input 
+          // onChange={ onChange } 
+          type="text" 
+          name="username"
+          // value={ username }
+          placeholder="Username" 
+        />
       </div>
       <label htmlFor="password">Password</label>
       <div>

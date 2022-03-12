@@ -1,4 +1,4 @@
-function ForecastCard({ forecast }) {
+const ForecastCard = ({ forecast }) => {
   const forecastInfo = forecast.map((f) => (
     <div className="forecast-card">
       <div>

@@ -18,7 +18,6 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoggedIn: false,
       city: '',
     }
   }
@@ -50,9 +49,10 @@ class App extends Component {
   // }
 
   render () {
+    console.log(this.state)
     return (
       <>
-        <Navigation onClick={ this.handleOnToggle }/>
+        <Navigation isLoggedIn={ this.props.isLoggedIn } onClick={ this.handleOnToggle } />
         <NewCityForm showForm={ this.props.showForm} onClick={ this.handleOnToggle } onSubmit={ this.handleOnSubmit } onChange={ this.handleOnChange } city={ this.state.city }/>
         <Cities requesting={ this.props.requesting } cities={ this.props.cities } forecasts={ this.props.forecast }/>
       </>
@@ -61,8 +61,10 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state)
   return { 
+    isLoggedIn: state.isLoggedIn,
+    token: state.token,
+    username: state.username,
     requesting: state.requesting,
     forecast: state.forecasts,
     cities: state.cities,

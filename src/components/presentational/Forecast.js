@@ -1,5 +1,3 @@
-import React from "react";
-
 const Forecast = ({}) => (
   <div className="forecast">
     <div className="daydescription-container">

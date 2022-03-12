@@ -1,17 +1,27 @@
 import { NavLink } from "react-router-dom";
-import SignUp from "./SignUp";
-import { Login } from "./Login";
 import Button from './Button';
 
 
-const Navigation = ({ onClick }) => {
+const Navigation = ({onClick, isLoggedIn}) => {
+  if (isLoggedIn) {
+    return (
+    <nav className="navigation-container">
+      <div>
+        <p>Hey there!</p>
+      </div>
+      <Button onClick={ onClick }/>
+    </nav>
+    )
+  }
+
   return (
     <nav className="navigation-container">
-      <NavLink>
-        <SignUp />
-      </NavLink>
-      <NavLink>
-        <Login />
+      <NavLink to="/signup" exact >
+        SignUp 
+      </NavLink >
+      ||
+      <NavLink to="/login" exact >
+       Login
       </NavLink>
       
       <Button onClick={ onClick }/>

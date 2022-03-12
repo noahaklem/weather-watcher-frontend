@@ -8,7 +8,7 @@ import './index.css';
 // Components
 import App from './App'
 import SignUp from './components/presentational/SignUp';
-import { Login } from './components/presentational/Login';
+import Login from './components/presentational/Login';
 
 // redux
 import { applyMiddleware, createStore } from 'redux';
@@ -26,8 +26,16 @@ const store = createStore(rootReducer, middlewareEnhancer);
 
 ReactDOM.render(
   <Router>
-    <Route exact path='/login' component={ Login } />
-    <Route exact path='/signup' component={ SignUp} />
+    <Route exact path='/login' render={() => 
+      <Provider store={ store }>
+        < Login />
+      </Provider>}
+    />
+    <Route exact path='/signup' render={() =>
+      <Provider store={ store }>
+        < SignUp />
+      </Provider>}
+    />
     <Route exact path='/' render={() =>
       <Provider store={ store }>
         <App /> 

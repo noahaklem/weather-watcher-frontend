@@ -5,6 +5,9 @@ const rootReducer = combineReducers({
 	cities: addCity,
 	forecasts: addForecast,
 	requesting: false,
+	isLoggedIn: false,
+	token: '',
+	username: addUser,
 });
 
 export default rootReducer;
@@ -50,6 +53,33 @@ function addForecast (
 				forecasts: [...state.forecasts, action.forecast],
 				requesting: false,
 			};
+
+		default:
+			return state;
+	}
+}
+
+function addUser (
+	state = { username: '', token: '', loggedIn: false },
+	action
+) {
+	switch (action.type) {
+		case 'START_ADDING_USER':
+			return {
+				...state,
+				username: state.username,
+				token: '',
+				loggedIn: false,
+			};
+
+		case 'ADD_USER':
+			return {
+				...state,
+				username: action.user.username,
+				token: action.user.jwt,
+				loggedIn: true,
+				// forecasts: [...state.forecasts, action.user.forecasts]
+			}
 
 		default:
 			return state;
