@@ -1,8 +1,11 @@
 const Button = ({ onClick }) => {
   return (
-    <button className="add-a-city" onClick={ onClick }>
-      Add A City
-    </button>
+    <div className="button-container">
+      <button className="add-a-city" onClick={ onClick }>
+        Add A City
+      </button>
+    </div>
+    
   ) 
 }
 

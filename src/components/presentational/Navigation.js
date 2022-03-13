@@ -5,13 +5,13 @@ import { NavLink } from "react-router-dom";
 import Button from './Button';
 import Logout from "./Logout";
 
-const Navigation = ({name, onClick, isLoggedIn}) => {
+const Navigation = ({name, onClick, isLoggedIn, logout}) => {
   if (isLoggedIn) {
     return (
     <nav className="navigation-container">
-      <div>
-        <Logout />
-        <p>{ name }</p>
+      <div className="greeting-container" >
+        <Logout logout={ logout } />
+        <h3>Welcome, { name }!</h3>
       </div>
       <Button onClick={ onClick }/>
     </nav>

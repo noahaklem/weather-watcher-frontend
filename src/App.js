@@ -11,7 +11,7 @@ import { addCity } from './actions/addCity';
 import { showForm } from './actions/showForm';
 import { addForecast } from './actions/addForecast';
 import { onStartUp } from './actions/onStartUp';
-
+import { logoutUser } from './actions/logoutUser';
 // redux
 import { connect } from 'react-redux';
 
@@ -21,6 +21,12 @@ class App extends Component {
     this.state = {
       city: '',
     }
+  }
+
+  handleOnClick = () => {
+    localStorage.removeItem('jwt');
+    this.props.dispatch({ type: '@@INIT'});
+    
   }
 
   handleOnToggle = () => {
@@ -53,7 +59,7 @@ class App extends Component {
   render () {
     return (
       <>
-        <Navigation name={ this.props.name } isLoggedIn={ this.props.isLoggedIn } onClick={ this.handleOnToggle } />
+        <Navigation name={ this.props.name } isLoggedIn={ this.props.isLoggedIn } onClick={ this.handleOnToggle } logout={ this.handleOnClick } />
         <NewCityForm showForm={ this.props.showForm} onClick={ this.handleOnToggle } onSubmit={ this.handleOnSubmit } onChange={ this.handleOnChange } city={ this.state.city }/>
         <Cities requesting={ this.props.requesting } cities={ this.props.cities } forecasts={ this.props.forecast }/>
       </>

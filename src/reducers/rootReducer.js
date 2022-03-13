@@ -1,11 +1,19 @@
 import { combineReducers } from "redux";
 
-const rootReducer = combineReducers({
+const allReducers = combineReducers({
 	showForm: showFormReducer,
 	cities: addCity,
 	forecasts: addForecast,
 	username: addUser,
 });
+
+const rootReducer = (state, action) => {
+	if (action.type === "LOGOUT_USER") {
+		state = undefined;
+	}
+
+	return allReducers(state,action)
+}
 
 export default rootReducer;
 
@@ -62,7 +70,6 @@ function addUser (
 ) {
 	switch (action.type) {
 		case 'START_LOGGING_IN_USER':
-			console.log("creating user")
 			return {
 				...state,
 				username: state.username,
@@ -70,10 +77,10 @@ function addUser (
 			};
 
 		case 'LOGIN_USER':
-			console.log('USER SHOULD BE LOGGED IN')
+			console.log("user should be logged in!")
 			return {
 				...state,
-				username: action.user.username,
+				username: action.user.user.username,
 				isLoggedIn: true,
 				// forecasts: [...state.forecasts, action.user.forecasts]
 			}
@@ -83,6 +90,8 @@ function addUser (
 			return state;
 	}
 }
+
+
 
 
 

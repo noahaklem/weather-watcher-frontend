@@ -44,30 +44,32 @@ class SignUp extends react.Component{
 
     return (
   
-      <form onSubmit={ this.handleOnSubmit }>
-        <h1>Sign Up</h1>
-        <label htmlFor="username">Username</label>
-        <div>
-          <input 
-            onChange={ this.handleOnChange } 
-            type="text" 
-            name="username"
-            value={ this.state.username } 
-            placeholder="Username" 
-          />
-        </div>
-        <label htmlFor="password">Password</label>
-        <div>
-          <input 
-            type="password" 
-            name="password" 
-            placeholder="Password" 
-            onChange={ this.handleOnChange }
-            value={ this.state.password }
-          />
-        </div>
-        <input type="submit" value="Login" />
-      </form>
+      <div className="form-container">
+        <form className="form" onSubmit={ this.handleOnSubmit }>
+          <h1>Sign Up</h1>
+          <label htmlFor="username">Username</label>
+          <div>
+            <input 
+              onChange={ this.handleOnChange } 
+              type="text" 
+              name="username"
+              value={ this.state.username } 
+              placeholder="Username" 
+            />
+          </div>
+          <label htmlFor="password">Password</label>
+          <div>
+            <input 
+              type="password" 
+              name="password" 
+              placeholder="Password" 
+              onChange={ this.handleOnChange }
+              value={ this.state.password }
+            />
+          </div>
+          <input type="submit" value="Login" />
+        </form>
+      </div>
     );
   }
 }
