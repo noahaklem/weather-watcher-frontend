@@ -1,14 +1,13 @@
-export const loginUser = (body) => {
+export const signUpUser = (body) => {
   const baseURL = 'http://localhost:3000/api/v1'
   const headers = {
     'Content-Type': 'application/json',
     Accept: 'application/json',
-    // Authorization: `Bearer ${token}`
   }
 
   return (dispatch) => {
     dispatch({ type: "START_LOGGING_IN_USER" });
-    fetch(`${baseURL}/login`, {
+    fetch(`${baseURL}/signup`, {
       method: 'POST',
       headers: headers,
       body: JSON.stringify({user: body})

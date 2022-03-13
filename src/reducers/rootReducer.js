@@ -62,7 +62,7 @@ function addUser (
 ) {
 	switch (action.type) {
 		case 'START_LOGGING_IN_USER':
-			console.log('START FETCH LOGGING IN USER')
+			console.log("creating user")
 			return {
 				...state,
 				username: state.username,
@@ -77,6 +77,7 @@ function addUser (
 				isLoggedIn: true,
 				// forecasts: [...state.forecasts, action.user.forecasts]
 			}
+			
 
 		default:
 			return state;

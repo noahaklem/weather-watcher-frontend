@@ -10,6 +10,7 @@ import NewCityForm from './components/presentational/NewCityForm';
 import { addCity } from './actions/addCity';
 import { showForm } from './actions/showForm';
 import { addForecast } from './actions/addForecast';
+import { onStartUp } from './actions/onStartUp';
 
 // redux
 import { connect } from 'react-redux';
@@ -44,15 +45,15 @@ class App extends Component {
   }
   
   // componentDidMount() {
-  //   ForecastService.getForecast().then(forecasts => this.setState({ forecasts })
-  //   )
+  //   if (localStorage.getItem('jwt')) {
+  //     this.props.dispatch(onStartUp(localStorage.getItem('jwt')))
+  //   } 
   // }
 
   render () {
-    console.log(this.props)
     return (
       <>
-        <Navigation isLoggedIn={ this.props.isLoggedIn } onClick={ this.handleOnToggle } />
+        <Navigation name={ this.props.name } isLoggedIn={ this.props.isLoggedIn } onClick={ this.handleOnToggle } />
         <NewCityForm showForm={ this.props.showForm} onClick={ this.handleOnToggle } onSubmit={ this.handleOnSubmit } onChange={ this.handleOnChange } city={ this.state.city }/>
         <Cities requesting={ this.props.requesting } cities={ this.props.cities } forecasts={ this.props.forecast }/>
       </>
@@ -61,9 +62,10 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state)
   return { 
     isLoggedIn: state.username.isLoggedIn,
-    username: state.username,
+    name: state.username.username,
     requesting: state.forecasts.requesting,
     forecast: state.forecasts,
     cities: state.cities,

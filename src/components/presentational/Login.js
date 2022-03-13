@@ -36,7 +36,6 @@ class Login extends react.Component{
   }
 
   render() {
-    console.log(this.props)
     if(this.props.isLoggedIn) {
       return (
         <App /> 
@@ -75,7 +74,6 @@ class Login extends react.Component{
 const mapStateToProps = (state) => {
   return {
     isLoggedIn: state.username.isLoggedIn,
-    username: state.username.username,
   }
 }
 

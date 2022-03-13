@@ -3,15 +3,15 @@ import { NavLink } from "react-router-dom";
 
 // components
 import Button from './Button';
+import Logout from "./Logout";
 
-
-const Navigation = ({onClick, isLoggedIn}) => {
-  console.log(isLoggedIn)
+const Navigation = ({name, onClick, isLoggedIn}) => {
   if (isLoggedIn) {
     return (
     <nav className="navigation-container">
       <div>
-        <p>Hey there!</p>
+        <Logout />
+        <p>{ name }</p>
       </div>
       <Button onClick={ onClick }/>
     </nav>
