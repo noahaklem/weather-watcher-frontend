@@ -1,70 +1,50 @@
-# Getting Started with Create React App
+# Weather Watcher Frontend
+<div align='center'>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## A React/Redux Project
 
-## Available Scripts
+  <p> Frontend Development </p>
+  <h3>Noah Klem - 2022</h3>
+</div>
+<h5  align="center">Contact Information</h5>
+<p align="center">
+  <a target="_blank"href="https://www.linkedin.com/in/noahaklem/"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white" /></a>&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="mailto:noahaklem@gmail.com?subject=Hello%20Ileri,%20From%20Github"><img src="https://img.shields.io/badge/gmail-%23D14836.svg?&style=for-the-badge&logo=gmail&logoColor=white" /></a>&nbsp;&nbsp;&nbsp;&nbsp;
+</p>
 
-In the project directory, you can run:
+### This project is accompanied by https://github.com/noahaklem/weather-watcher-backend
 
-### `npm start`
+Weather Watch is a frontend stateful application that make calls to an external rails api, also built by Noah Klem. The application features:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<ul align='center'>
+  <li>Sign into a user profile consisting of a username and password</li>
+  <li>Grant user a JWT authorization token</li>
+  <li>Make a user profile consisting of a username and password</li>
+  <li>Persist new user to rails api database</li>
+  <li>Upload multiple forecasts</li>
+  
+</ul>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## A Note On Application
 
-### `npm test`
+This application is made to be accompanied by the above rails api. However, it is possible to connect this frontend to another api. Although it would be a pain because this frontend is design specifically for this project. This frontend is set up with two default URLs for processing a fetch request that can be changed. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The HTTP verbs are POST and GET. You will see these actions set up in the actions folder under addForecast.js and onStartUp.js.
 
-### `npm run build`
+## Redux
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+** This project makes use of Redux and state middleware. You will need to us understand that Redux state should note be manipulated throughout the project. However, you will see a moment in Redux's rootReducer folder that state is set to undefined and the default recuders are all set to default values at one time. That is because of the JWT token and expiration method. 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## JWT
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  JSON Web Token is used to authenticate a user in the rails API. This was purely for practice using JWT's.
 
-### `npm run eject`
+# Installation
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+In the command line run the following:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. `$ npm install`
+2. `$ npm start`
+3. Upon start up you will have access to as many forecast as you would like. Play around. Different states, different contries!
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

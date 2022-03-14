@@ -1,5 +1,5 @@
 import react from "react";
-
+import { Redirect } from "react-router-dom";
 // components
 import App from "../../App";
 
@@ -27,18 +27,18 @@ class SignUp extends react.Component{
 
   handleOnSubmit = (event) => {
     event.preventDefault();
-    const user = { username: this.state.username, password: this.state.password }
+    const user = { username: this.state.username, password: this.state.password };
     this.setState({
       username: '',
       password: '',
-    })
-    this.props.dispatch(signUpUser(user))
+    });
+    this.props.dispatch(signUpUser(user));
   }
 
   render() {
     if(this.props.isLoggedIn) {
       return (
-        <App /> 
+        <Redirect to='/' /> 
       );
     }
 

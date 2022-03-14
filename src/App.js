@@ -1,5 +1,6 @@
 // react
 import { Component } from 'react';
+// import { Redirect } from 'react-router-dom';
 
 // Components
 import Navigation from './components/presentational/Navigation';
@@ -14,6 +15,7 @@ import { onStartUp } from './actions/onStartUp';
 import { logoutUser } from './actions/logoutUser';
 // redux
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 class App extends Component {
   constructor(props) {
@@ -24,9 +26,9 @@ class App extends Component {
   }
 
   handleOnClick = () => {
+    console.log("working")
     localStorage.removeItem('jwt');
     this.props.dispatch({ type: '@@INIT'});
-    
   }
 
   handleOnToggle = () => {

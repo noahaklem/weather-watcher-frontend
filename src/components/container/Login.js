@@ -1,5 +1,5 @@
 import react from "react";
-// import { useNavigate } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 // components
 import App from "../../App";
@@ -27,21 +27,19 @@ class Login extends react.Component{
   }
 
   handleOnSubmit = (event) => {
-    // let navigate = useNavigate();
     event.preventDefault();
-    const user = { username: this.state.username, password: this.state.password }
+    const user = { username: this.state.username, password: this.state.password };
     this.setState({
       username: '',
       password: '',
-    })
-    this.props.dispatch(loginUser(user))
-    // navigate('../', { replace: true });
+    });
+    this.props.dispatch(loginUser(user));
   }
 
   render() {
     if(this.props.isLoggedIn) {
       return (
-        <App /> 
+        <Redirect to='/' /> 
       );
     }
 

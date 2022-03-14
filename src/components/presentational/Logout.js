@@ -1,28 +1,27 @@
 // redux
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+
+import App from '../../App';
 // import { useHistory } from 'react-router-dom';
 
-const Logout = ({ logout }) => {
-  // const history = useHistory();
-
-  // function handleClick() {
-  //   history.push('/')
-  // }
-
+const Logout = (props) => {
+  
   return (
-    <button className="add-a-city" onClick={ logout }>
+    <button className="add-a-city" onClick={ props.logout }>
       Logout
     </button>
   ) 
 }
 
-// const mapStateToProps = (state) => {
-//   return {
-//     isLoggedIn: state.username.isLoggedIn,
-//   }
-// }
+const mapStateToProps = (state) => {
+  console.log(state)
+  return {
+    isLoggedIn: state.username.isLoggedIn,
+  }
+}
 
-export default connect()(Logout);
+export default connect(mapStateToProps)(Logout);
 
 
 // {showForm: {…}, cities: Array(0), forecasts: {…}, username: {…}}
